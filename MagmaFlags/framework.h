@@ -19,7 +19,7 @@ public:
 	{
 		return !(m_flags & flag);
 	}
-	inline MagmaFlags_32& operator=(const MagmaEnum_32::Flag flag) noexcept
+	inline MagmaFlags_32& operator+=(const MagmaEnum_32::Flag flag) noexcept
 	{
 		m_flags = static_cast<MagmaEnum_32::Flag>(m_flags | flag);
 		return *this;
@@ -53,7 +53,7 @@ public:
 	{
 		return !(m_flags & flag);
 	}
-	inline MagmaFlags_64& operator=(const MagmaEnum_64::Flag flag) noexcept
+	inline MagmaFlags_64& operator+=(const MagmaEnum_64::Flag flag) noexcept
 	{
 		m_flags = static_cast<MagmaEnum_64::Flag>(m_flags | flag);
 		return *this;
