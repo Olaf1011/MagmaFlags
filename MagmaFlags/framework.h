@@ -1,6 +1,7 @@
 #pragma once
 
 #define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
+#include "MagmaEnum.hpp"
 
 namespace MagmaEnum_32
 {
@@ -11,6 +12,9 @@ class MagmaFlags_32
 {
 	MagmaEnum_32::Flag m_flags = static_cast<MagmaEnum_32::Flag>(0);
 public:
+	void* operator new(size_t size) = delete;
+	void operator delete(void* pointer) = delete;
+
 	inline bool operator==(const MagmaEnum_32::Flag flag) const
 	{
 		return m_flags & flag;
@@ -32,8 +36,11 @@ public:
 		m_flags = magmaFlags.m_flags;
 		return *this;
 	}
-	void* operator new(size_t size) = delete;
-	void operator delete(void* pointer) = delete;
+
+	void Clear()
+	{
+		m_flags = static_cast<MagmaEnum_32::Flag>(m_flags ^ m_flags);
+	}
 };
 
 namespace MagmaEnum_64
@@ -45,6 +52,9 @@ class MagmaFlags_64
 {
 	MagmaEnum_64::Flag m_flags = static_cast<MagmaEnum_64::Flag>(0);
 public:
+	void* operator new(size_t size) = delete;
+	void operator delete(void* pointer) = delete;
+
 	inline bool operator==(const MagmaEnum_64::Flag flag) const
 	{
 		return m_flags & flag;
@@ -66,6 +76,9 @@ public:
 		m_flags = magmaFlags.m_flags;
 		return *this;
 	}
-	void* operator new(size_t size) = delete;
-	void operator delete(void* pointer) = delete;
+
+	void Clear()
+	{
+		m_flags = static_cast<MagmaEnum_64::Flag>(m_flags ^ m_flags);
+	}
 };
